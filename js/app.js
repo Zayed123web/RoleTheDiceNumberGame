@@ -81,7 +81,7 @@ function player2Play() {
 }
 
 function progressbar(playerScore, progressbarHTML) {
-    progress = (playerScore / 20) * 100;
+    progress = (playerScore / winningGame) * 100;
     progressbarHTML.style = `width: ${progress}%`;
 }
 
@@ -125,13 +125,55 @@ gameReset.addEventListener('click', () => {
 });
 
 function scoreDisplay(score, playerDisplay) {
-    console.log(score);
-    let item = '';
-    score.forEach(ele => {
-        item = `<li class="list-group-item"><span>1st attampt</span>${ele}</li>`
-    })
-    playerDisplay.appendChild(item);
+    // console.log(score);
+    // let item = '';
+    // score.forEach(ele => {
+    //     item = `<li class="list-group-item"><span>1st attampt</span>${ele}</li>`
+    // })
+    // playerDisplay.appendChild(item);
 
+    // console.log(score)
+    let item = ''
+    // score.forEach((ele, index) => {
+    //   item += `<li class="list-group-item"><span>${index} attampt + </span>${ele}</li>`
+    // })
+    for(let i = 0; i < score.length; i++){
+        if(i === 0){
+            item += `<li class="list-group-item"><span>1st attampt </span>${score[i]}</li>`
+        }else if(i === 1){
+            item += `<li class="list-group-item"><span>2nd attampt + </span>${score[i]}</li>`
+        } else if(i === 2){
+            item += `<li class="list-group-item"><span>3rd attampt + </span>${score[i]}</li>`
+        }else if(i === 3){
+            item += `<li class="list-group-item"><span>4th attampt + </span>${score[i]}</li>`
+        }
+        else if(i === 4){
+            item += `<li class="list-group-item"><span>5th attampt + </span>${score[i]}</li>`
+        }
+        else if(i === 5){
+            item += `<li class="list-group-item"><span>6th attampt + </span>${score[i]}</li>`
+        }
+        else if(i === 6){
+            item += `<li class="list-group-item"><span>7th attampt + </span>${score[i]}</li>`
+        }
+        else if(i === 7){
+            item += `<li class="list-group-item"><span>8th attampt + </span>${score[i]}</li>`
+        }
+        else if(i === 8){
+            item += `<li class="list-group-item"><span>9th attampt + </span>${score[i]}</li>`
+        }
+        else if(i === 9){
+            item += `<li class="list-group-item"><span>${score[i] + 1}th attampt + </span>${score[i]}</li>`
+        }
+    }
+    //    item += `<li class="list-group-item"><span>${score[i]} attampt + </span>${score[i]}</li>`
+    //playerDisplay.appendChild(item);
+    playerDisplay.innerHTML = '';
+
+    playerDisplay.insertAdjacentHTML('afterbegin', item)
+
+    player1Total.innerHTML = player1;
+    player2Total.innerHTML = player2;
 
 }
 
@@ -147,6 +189,11 @@ function reset() {
     player2Progress.style = `width: 0%`;
     player1Img.src = `img/player1-1.png`;
     player2Img.src = `img/player2-1.png`;
+    player1ScoreDisplay = [];
+    player2ScoreDisplay = [];
+    player1Details.innerHTML = '';
+    player2Details.innerHTML = '';
+
 
 }
 
